@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="w-100 text-center">
+        <form autocomplete="off" id="search-form">
+            {% csrf_token %}
+             <input id="search-input" class="p-3 w-50 search" placeholder="Найти шавуху">
+        </form>
+    </div>
+    <div id="result-box">
+        {% for item in foods %}
+            <div class="catalog">
+                <div class="food_container">
+                    <a href="{% url 'foodpage' item.id %}">
+                        <p><img src="{{ item.pic.url }}" style="width: 160px"></p>
+                        <p>{{ item }}</p>
+                        {{ item.price }} BYN<br>
+                        {{ item.weight }} г<br>
+                    </a>
+                    <button class="add-to-cart-btn" data-product-id="{{ item.id }}">Добавить в корзину</button>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

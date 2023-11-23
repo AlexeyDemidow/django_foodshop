@@ -1,0 +1,28 @@
+.food_container {
+    width: 180px;
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    margin: 0 auto auto;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    padding: 10px;
+    border-radius: 9px;
+    text-align: center;
+}
+
+.cart_container {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    margin: 0 auto auto;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    padding: 10px;
+    border-radius: 9px;
+    text-align: center;
+}
+
+.catalog {
+    display: inline-flex;
+    padding: 10px;
+}
+

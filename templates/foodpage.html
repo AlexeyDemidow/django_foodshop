@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ food }}{% endblock %}
+
+{% block content %}
+    <h1>{{ food.name }}</h1><br>
+    <p><img src="{{ food.pic.url }}" alt="Изображение"></p>
+    Состав:<br>
+    {{ food.description }}<br>
+    Вес:<br>
+    {{ food.weight }} грамм<br>
+    Цена:
+    {{ food.price }} BYN<br>
+
+    <button class="add-to-cart-btn" data-product-id={{ food.id }}>Добавить в корзину</button>
+{% endblock %}
