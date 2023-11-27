@@ -13,8 +13,9 @@ class Customer(models.Model):
         blank=True,
         max_length=150,
         help_text='Имя',
+        verbose_name='Имя',
     )
-    telephone = models.CharField(max_length=100, blank=True, help_text='Телефон')
+    telephone = models.CharField(max_length=100, blank=True, help_text='Телефон', verbose_name='Телефон')
     date_of_birth = models.DateField(
         null=True,
         blank=True,
