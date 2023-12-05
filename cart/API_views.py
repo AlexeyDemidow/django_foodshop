@@ -31,6 +31,7 @@ class CartFoodsAPIViewSet(mixins.ListModelMixin,
     def get_queryset(self):
         cart_item = CartItem.objects.filter(user=self.request.user).values(
             'id',
+            'product_id',
             'user__customer__customer_name',
             'product__name',
             'quantity',
