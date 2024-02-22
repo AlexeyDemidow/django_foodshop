@@ -3,17 +3,25 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, TemplateView, DetailView, UpdateView
+from django.contrib.auth.models import User
 
 from customers.forms import CustomerCreationForm
 from customers.models import Customer
+from .tasks import send_mailing
 
 
 class SignUpView(CreateView):
     """Представление регистрации пользователя"""
 
+    model = User
     form_class = CustomerCreationForm
     success_url = reverse_lazy('signup_success')
     template_name = 'registration/signup.html'
+
+    def form_valid(self, form):
+        form.save()
+        send_mailing.delay(form.instance.username, form.instance.email)  # нельзя импортировать объекты!!!
+        return super().form_valid(form)
 
 
 class SignUpSuccess(TemplateView):
